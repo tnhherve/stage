@@ -20,10 +20,14 @@ class CreateEtudiantsTable extends Migration
             $table->string('prenom');
             $table->string('email');
             $table->string('telephone');
-            $table->foreign('parcours_id')->references('id')->on('parcours');
-            $table->foreign('cycle_id')->references('id')->on('cycles');
-            $table->foreign('niveau_id')->references('id')->on('niveaux');
-            $table->foreign('option_id')->references('id')->on('options');
+            $table->bigInteger('parcours_id');
+            $table->bigInteger('cycle_id');
+            $table->bigInteger('niveau_id');
+            $table->bigInteger('option_id');
+            $table->foreign('parcours_id')->references('id')->on('parcours')->onDelete('RESTRICT')->onUpdate('RESTRICT');
+            $table->foreign('cycle_id')->references('id')->on('cycles')->onDelete('RESTRICT')->onUpdate('RESTRICT');
+            $table->foreign('niveau_id')->references('id')->on('niveaux')->onDelete('RESTRICT')->onUpdate('RESTRICT');
+            $table->foreign('option_id')->references('id')->on('options')->onDelete('RESTRICT')->onUpdate('RESTRICT');
             $table->timestamps();
         });
     }

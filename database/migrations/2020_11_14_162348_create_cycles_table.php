@@ -16,7 +16,8 @@ class CreateCyclesTable extends Migration
         Schema::create('cycles', function (Blueprint $table) {
             $table->id();
             $table->string('nom_cycle');
-            $table->foreign('parcours_id')->references('id')->on('parcours');
+            $table->bigInteger('parcours_id');
+            $table->foreign('parcours_id')->references('id')->on('parcours')->onDelete('RESTRICT')->onUpdate('RESTRICT');
             $table->timestamps();
         });
     }

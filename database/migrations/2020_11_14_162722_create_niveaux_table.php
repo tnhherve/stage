@@ -16,7 +16,8 @@ class CreateNiveauxTable extends Migration
         Schema::create('niveaux', function (Blueprint $table) {
             $table->id();
             $table->string('nom_niveau');
-            $table->foreign('parcours_id')->references('id')->on('parcours');
+            $table->bigInteger('parcours_id');
+            $table->foreign('parcours_id')->references('id')->on('parcours')->onDelete('RESTRICT')->onUpdate('RESTRICT');
             $table->timestamps();
         });
     }

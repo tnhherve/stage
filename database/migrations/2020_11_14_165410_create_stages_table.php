@@ -18,10 +18,11 @@ class CreateStagesTable extends Migration
             $table->string('poste');
             $table->string('description');
             $table->string('quartier');
-            $table->string('poste');
             $table->integer('places');
-            $table->foreign('entreprise_id')->references('id')->on('entreprises');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->bigInteger('user_id');
+            $table->bigInteger('entreprise_id');
+            $table->foreign('entreprise_id')->references('id')->on('entreprises')->onDelete('RESTRICT')->onUpdate('RESTRICT');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('RESTRICT')->onUpdate('RESTRICT');
             $table->timestamps();
         });
     }
